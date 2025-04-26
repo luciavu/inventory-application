@@ -1,0 +1,31 @@
+{
+  "name": "inventory-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciavu/inventory-application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/luciavu/inventory-application/issues"
+  },
+  "homepage": "https://github.com/luciavu/inventory-application#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-validator": "^7.2.1",
+    "pg": "^8.15.6"
+  }
+}

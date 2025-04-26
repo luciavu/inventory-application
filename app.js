@@ -1,0 +1,30 @@
+const path = require('path');
+const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
+require('dotenv').config();
+const indexRouter = require('./routes/indexRouter');
+const CustomNotFoundError = require('./errors/CustomNotFoundError');
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// View engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+
+// Routes
+app.use('/', indexRouter);
+
+app.use((req, res, next) => {
+  throw new CustomNotFoundError('Page not found.');
+});
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}.`);
+});
