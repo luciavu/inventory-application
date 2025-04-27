@@ -5,13 +5,27 @@ async function getItems() {
   return rows;
 }
 
-async function getCategories() {
-  const { rows } = await pool.query(`SELECT * FROM categories`);
-  return rows;
+async function addCategory(name) {
+  try {
+    await pool.query(`INSERT INTO categories (name) VALUES ($1)`, [name]);
+  } catch (err) {
+    console.error('Error adding category');
+    throw err;
+  }
 }
 
-async function getOrders() {
-  const { rows } = await pool.query(`SELECT * FROM orders`);
+async function getCategoryById(categoryId) {
+  try {
+    const { rows } = await pool.query(`SELECT name FROM categories WHERE id = $1`, [categoryId]);
+    return rows;
+  } catch (err) {
+    console.error('Error finding category');
+    throw err;
+  }
+}
+
+async function getCategories() {
+  const { rows } = await pool.query(`SELECT * FROM categories`);
   return rows;
 }
 
@@ -33,7 +47,7 @@ async function addItem(name, unit, category_id, quantity, price) {
       [name, unit, category_id, quantity, price]
     );
   } catch (err) {
-    console.error('Error adding');
+    console.error('Error adding item');
     throw err;
   }
 }
@@ -63,7 +77,8 @@ async function deleteItem(itemId) {
 module.exports = {
   getItems,
   getCategories,
-  getOrders,
+  getCategoryById,
+  addCategory,
   getItemsByCategory,
   getItemById,
   addItem,

@@ -3,9 +3,11 @@ const CustomNotFoundError = require('../errors/CustomNotFoundError.js');
 
 module.exports = {
   addCategoryGet: async (req, res, next) => {
-    res.send('Category add get');
+    res.render('addCategory', { title: 'Add category' });
   },
   addCategoryPost: async (req, res, next) => {
-    res.send('Category add post');
+    const { cname } = req.body;
+    await db.addCategory(cname);
+    res.redirect('/');
   },
 };

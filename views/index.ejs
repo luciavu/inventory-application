@@ -15,10 +15,9 @@
       </div>
       <div class="pair">
         <div class="label">Access Mode</div>
-        <div class="value">Viewer</div>
+        <div class="value">Editor</div>
       </div>
     </div>
-
     <div class="actions">
       <a href="/item/add"><i class="fas fa-plus"></i>Add item</a>
       <a href="/category/add"><i class="fas fa-plus"></i>Add category</a>
@@ -41,7 +40,7 @@
           <td><%=item.unit%></td>
           <td><%=item.price.toFixed(2)%></td>
           <td><%=item.quantity%></td>
-          <td>
+          <td class="table-actions">
             <a href="/item/update/<%=item.id%>"> <i class="fas fa-pen"></i> </a>
             <a href="/item/delete/<%=item.id%>">
               <i class="fas fa-trash"></i>

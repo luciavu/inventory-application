@@ -5,9 +5,10 @@
     ></a>
   </div>
   <div class="nav">
-    <p>Search By Category</p>
+    <p>CATEGORY</p>
+    <a href="/">All</a>
     <% categories.forEach((category) => {%>
-    <a href="/"><%=category.name%></a>
+    <a href="/<%=category.id%>"><%=category.name%></a>
     <%})%>
   </div>
 </div>

@@ -5,9 +5,13 @@
 }
 
 body {
-  margin: 3rem;
+  padding: 3rem;
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+}
+
+.sidebar {
+  width: 15%;
 }
 
 .sidebar,
@@ -16,8 +20,20 @@ body {
   flex-direction: column;
 }
 
+.github i {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
 .nav {
-  gap: 2rem;
+  gap: 1.5rem;
+  width: 50%;
+}
+
+.nav p {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 h1,
@@ -34,11 +50,16 @@ a {
 
 h2 {
   margin-bottom: 2rem;
+  margin-top: 0.5rem;
 }
 
 h1 {
   font-size: 3.5rem;
   font-weight: 500;
+}
+
+a {
+  color: rgb(0, 0, 0);
 }
 
 button {
@@ -79,9 +100,13 @@ table {
 
 th,
 td {
-  padding: 1rem 4rem 1rem 0rem;
+  padding: 1rem 3rem 1rem 0rem;
 }
 
+.table-actions {
+  display: flex;
+  gap: 1rem;
+}
 form {
   padding: 3rem 0;
   display: flex;
