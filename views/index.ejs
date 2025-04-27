@@ -1,1 +1,55 @@
-<h1>Index</h1>
+<div class="main">
+  <h2><a href="/">Inventories</a></h2>
+  <div class="inventory">
+    <h1><%=title%></h1>
+    <div class="summary">
+      <div class="pair">
+        <div class="label">Products</div>
+        <div class="value"><%=items.length%></div>
+      </div>
+      <div class="pair">
+        <div class="label">Total Stock Value</div>
+        <div class="value">
+          $<%=items.reduce((sum, item) => sum+ item.quantity*item.price, 0).toFixed(2)%>
+        </div>
+      </div>
+      <div class="pair">
+        <div class="label">Access Mode</div>
+        <div class="value">Viewer</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="/item/add"><i class="fas fa-plus"></i>Add item</a>
+      <a href="/category/add"><i class="fas fa-plus"></i>Add category</a>
+    </div>
+    <hr />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Unit</th>
+          <th>Price ($)</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%items.forEach((item) => {%>
+        <tr>
+          <td><%=item.name%></td>
+          <td><%=item.unit%></td>
+          <td><%=item.price.toFixed(2)%></td>
+          <td><%=item.quantity%></td>
+          <td>
+            <a href="/item/update/<%=item.id%>"> <i class="fas fa-pen"></i> </a>
+            <a href="/item/delete/<%=item.id%>">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </div>
+</div>

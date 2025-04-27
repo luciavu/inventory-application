@@ -1,0 +1,13 @@
+<div class="sidebar">
+  <div class="github">
+    <a href="https://github.com/luciavu/inventory-application" target="_blank"
+      ><i class="fab fa-github"></i
+    ></a>
+  </div>
+  <div class="nav">
+    <p>Search By Category</p>
+    <% categories.forEach((category) => {%>
+    <a href="/"><%=category.name%></a>
+    <%})%>
+  </div>
+</div>

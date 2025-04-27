@@ -1,0 +1,35 @@
+<div class="add-form">
+  <h2><a href="/">Back</a></h2>
+  <div class="inventory">
+    <h1><%=title%></h1>
+    <form action="/item/add" method="post">
+      <label for="name">
+        Product name:
+        <input type="text" name="name" id="name" required
+      /></label>
+
+      <fieldset>
+        <label for="unit"> Unit: <input type="text" name="unit" id="unit" required /> </label>
+        <label for="category">
+          Category:
+          <select name="category" id="category">
+            <%categories.forEach((category) => { %>
+            <option value="<%=category.id%>"><%=category.name%></option>
+            <%})%>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <label for="price">
+          Price ($):
+          <input type="number" name="price" id="price" required />
+        </label>
+        <label for="quantity">
+          Quantity:
+          <input type="number" name="quantity" id="quantity" required />
+        </label>
+      </fieldset>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>

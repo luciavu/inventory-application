@@ -1,7 +1,7 @@
 const pool = require('./pool');
 
-async function getAllItems() {
-  const { rows } = await pool.query(`SELECT * FROM items`);
+async function getItems() {
+  const { rows } = await pool.query(`SELECT * FROM items ORDER BY id`);
   return rows;
 }
 
@@ -20,12 +20,53 @@ async function getItemsByCategory(categoryId) {
   return rows;
 }
 
-async function updateItem(itemId, order_quantity) {
+async function getItemById(itemId) {
+  const { rows } = await pool.query(`SELECT * FROM items WHERE id = $1`, [itemId]);
+  return rows;
+}
+
+async function addItem(name, unit, category_id, quantity, price) {
+  try {
+    await pool.query(
+      `INSERT INTO items (name, unit, category_id, quantity, price) VALUES
+    ($1, $2, $3, $4, $5)`,
+      [name, unit, category_id, quantity, price]
+    );
+  } catch (err) {
+    console.error('Error adding');
+    throw err;
+  }
+}
+
+async function updateItem(itemId, name, unit, categoryId, price, quantity) {
   const { rows } = await pool.query(
-    `UPDATE items SET on_order = on_order + $1 WHERE id = $2 RETURNING *`,
-    [order_quantity, itemId]
+    `UPDATE items SET name = $2, unit = $3, category_id = $4, price = $5, quantity= $6 WHERE id = $1 RETURNING *`,
+    [itemId, name, unit, categoryId, price, quantity]
   );
   return rows;
 }
 
-module.exports = { getAllItems, getCategories, getOrders, getItemsByCategory, updateItem };
+async function deleteItem(itemId) {
+  try {
+    const result = await pool.query(`DELETE FROM items WHERE id = $1`, [itemId]);
+    if (result.rowCount === 0) {
+      console.log('No item found to delete with ID:', itemId);
+    } else {
+      console.log('Item deleted succesfully');
+    }
+  } catch (err) {
+    console.error('Error deleting');
+    throw err;
+  }
+}
+
+module.exports = {
+  getItems,
+  getCategories,
+  getOrders,
+  getItemsByCategory,
+  getItemById,
+  addItem,
+  updateItem,
+  deleteItem,
+};

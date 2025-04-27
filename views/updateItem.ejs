@@ -1,0 +1,41 @@
+<div class="update-form">
+  <h2><a href="/">Back</a></h2>
+  <div class="inventory">
+    <h1><%=title%></h1>
+    <form action="/item/update/<%=item.id%>" method="post">
+      <label for="name">
+        Product name:
+        <input type="text" name="name" id="name" value="<%=item.name%>" required
+      /></label>
+
+      <fieldset>
+        <label for="unit">
+          Unit: <input type="text" name="unit" id="unit" value="<%=item.unit%>" required />
+        </label>
+        <label for="category">
+          Category:
+          <select name="category" id="category">
+            <%categories.forEach((category) => { %>
+            <option
+              value="<%=category.id%>" 
+              <%= category.id === item.category_id ? 'selected' : '' %>>
+              <%=category.name%>
+            </option>
+            <%})%>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <label for="price">
+          Price ($):
+          <input type="number" name="price" id="price" value="<%=item.price%>" required />
+        </label>
+        <label for="quantity">
+          Quantity:
+          <input type="number" name="quantity" id="quantity" value="<%=item.quantity%>" required />
+        </label>
+      </fieldset>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

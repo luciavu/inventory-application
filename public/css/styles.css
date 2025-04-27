@@ -1,5 +1,157 @@
 * {
   box-sizing: border-box;
-  color: red;
   font-family: 'Inter', Arial, Calibri;
+  font-size: 16px;
+}
+
+body {
+  margin: 3rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.sidebar,
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  gap: 2rem;
+}
+
+h1,
+h2,
+a {
+  margin: 0;
+  text-decoration: none;
+  align-content: center;
+}
+
+.value {
+  font-size: 2.5rem;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
+button {
+  border: none;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.actions a {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.actions a i {
+  font-size: 0.8rem;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding: 1.5rem 0;
+}
+
+table {
+  text-align: left;
+}
+
+th,
+td {
+  padding: 1rem 4rem 1rem 0rem;
+}
+
+form {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+input,
+select {
+  border: 0.1rem solid rgb(233, 233, 233);
+  background-color: rgb(248, 248, 248);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+}
+
+fieldset {
+  display: flex;
+  gap: 2rem;
+  border: none;
+  padding: 0;
+}
+
+input:focus {
+  background-color: rgb(252, 252, 252);
+}
+
+input#name {
+  width: 22rem;
+}
+
+input#unit {
+  width: 10rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input#price {
+  width: 5rem;
+}
+input#quantity {
+  width: 4rem;
+}
+
+form button {
+  background-color: black;
+  color: white;
+  width: max-content;
+  padding: 0.8rem 3rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.delete-item p {
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+}
+
+#delete {
+  background-color: rgb(230, 38, 38);
+  border: none;
 }

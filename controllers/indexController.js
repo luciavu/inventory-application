@@ -2,7 +2,8 @@ const db = require('../db/queries');
 const CustomNotFoundError = require('../errors/CustomNotFoundError.js');
 
 module.exports = {
-  get: (req, res, next) => {
-    res.render('index', { title: 'Main page' });
+  get: async (req, res, next) => {
+    const items = await db.getItems();
+    res.render('index', { title: 'Main inventory', items: items });
   },
 };
