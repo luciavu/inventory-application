@@ -18,6 +18,6 @@ This application is deployed on Render, and the database is hosted on Supabase.
 
 ## Links
 
-Live link:
+Live link: https://inventory-application-nhzy.onrender.com/
 
 Assignment: https://www.theodinproject.com/lessons/node-path-nodejs-inventory-application
