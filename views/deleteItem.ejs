@@ -1,11 +1,16 @@
 <div class="delete-item">
   <h2><a href="/">Back</a></h2>
   <h1><%=title%></h1>
+  <%- include("./partials/errors.ejs") %>
   <form action="/item/delete/<%=item.id%>" method="post">
     <div>Are you sure you want to delete "<%=item.name%>"? <br />This action is irreversible.</div>
     <fieldset>
+      <label for="adminPassword">Enter admin password to confirm:</label>
+      <input type="password" name="adminPassword" required />
+    </fieldset>
+    <fieldset>
       <button id="delete" type="submit">Delete</button>
-      <a href="/">Go back</a>
+      <a href="/" class="delete-back">Go back</a>
     </fieldset>
   </form>
 </div>

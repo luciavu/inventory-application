@@ -8,14 +8,14 @@
         <div class="value"><%=items.length%></div>
       </div>
       <div class="pair">
+        <div class="label">Total Stock</div>
+        <div class="value"><%=items.reduce((sum, item) => sum+ item.quantity, 0)%></div>
+      </div>
+      <div class="pair">
         <div class="label">Total Stock Value</div>
         <div class="value">
           $<%=items.reduce((sum, item) => sum+ item.quantity*item.price, 0).toFixed(2)%>
         </div>
-      </div>
-      <div class="pair">
-        <div class="label">Access Mode</div>
-        <div class="value">Editor</div>
       </div>
     </div>
     <div class="actions">

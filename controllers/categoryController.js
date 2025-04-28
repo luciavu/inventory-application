@@ -21,6 +21,13 @@ module.exports = {
             errors: errors.array(),
           });
         }
+        const { adminPassword } = req.body;
+        if (adminPassword !== process.env.ADMIN_PASSWORD) {
+          return res.render('addCategory', {
+            title: 'Add category',
+            errors: [{ msg: 'Incorrect admin password.' }],
+          });
+        }
         const { cname } = req.body;
         await db.addCategory(cname);
         res.redirect('/');

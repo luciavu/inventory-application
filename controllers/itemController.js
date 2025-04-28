@@ -28,10 +28,10 @@ module.exports = {
     async (req, res, next) => {
       try {
         const errors = validationResult(req);
+        const { itemId } = req.params;
+        const item = await db.getItemById(itemId);
+        const categories = await db.getCategories();
         if (!errors.isEmpty()) {
-          const { itemId } = req.params;
-          const item = await db.getItemById(itemId);
-          const categories = await db.getCategories();
           return res.status(400).render('updateItem', {
             title: 'Update product details',
             item: item[0],
@@ -39,7 +39,15 @@ module.exports = {
             errors: errors.array(),
           });
         }
-        const { itemId } = req.params;
+        const { adminPassword } = req.body;
+        if (adminPassword !== process.env.ADMIN_PASSWORD) {
+          return res.render('updateItem', {
+            title: 'Update product details',
+            item: item[0],
+            categories: categories,
+            errors: [{ msg: 'Incorrect admin password.' }],
+          });
+        }
         const { name, unit, category, price, quantity } = req.body;
         await db.updateItem(itemId, name, unit, category, price, quantity);
         res.redirect('/');
@@ -56,6 +64,15 @@ module.exports = {
   deleteItemPost: async (req, res, next) => {
     try {
       const { itemId } = req.params;
+      const { adminPassword } = req.body;
+      const item = await db.getItemById(itemId);
+      if (adminPassword !== process.env.ADMIN_PASSWORD) {
+        return res.render('deleteItem', {
+          title: 'Delete product',
+          item: item[0],
+          errors: [{ msg: 'Incorrect admin password.' }],
+        });
+      }
       await db.deleteItem(itemId);
       res.redirect('/');
     } catch (err) {
@@ -71,6 +88,13 @@ module.exports = {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).render('addItem', { title: 'Add product', errors: errors.array() });
+      }
+      const { adminPassword } = req.body;
+      if (adminPassword !== process.env.ADMIN_PASSWORD) {
+        return res.render('addItem', {
+          title: 'Add product',
+          errors: [{ msg: 'Incorrect admin password.' }],
+        });
       }
       const { name, unit, category, price, quantity } = req.body;
       await db.addItem(name, unit, category, price, quantity);

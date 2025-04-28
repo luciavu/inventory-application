@@ -162,7 +162,8 @@ input#quantity {
   width: 4rem;
 }
 
-form button {
+form button,
+.delete-back {
   background-color: black;
   color: white;
   width: max-content;
