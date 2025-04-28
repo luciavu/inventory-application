@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS items  (
 );`;
 
 const fillCategorySQL = `
-INSERT INTO categories (id, name) VALUES 
-    (1, 'Drinks'), (2, 'Food'), (3, 'Supplies');
+INSERT INTO categories (name) VALUES 
+    ('Drinks'), ('Food'), ('Supplies');
 `;
 
 const fillItemsSQL = `
