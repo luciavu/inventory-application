@@ -1,5 +1,7 @@
 # Inventory Application
 
+The Odin Project - NodeJS Course Project (2/8):
+
 A simple restaurant-based inventory management application built with Express and PostgreSQL.
 This application is deployed on Render, and the database is hosted on Supabase.
 
